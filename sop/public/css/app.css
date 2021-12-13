@@ -11286,3 +11286,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  height: 100%;
+}
+
+#log-reg-container {
+  margin-top: 10%;
+}

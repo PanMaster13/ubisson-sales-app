@@ -1,7 +1,7 @@
 @extends('layouts.log-reg')
 
 @section('content')
-<div class="container">
+<div id="log-reg-container" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
