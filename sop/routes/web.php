@@ -18,8 +18,7 @@ use App\Http\Controllers\PagesController;
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [PagesController::class, 'index']);
-Route::get('/exchange', [PagesController::class, 'exchange']);
-
+Route::resource('exchanges', ExchangesController::class);
 Auth::routes();
 
 

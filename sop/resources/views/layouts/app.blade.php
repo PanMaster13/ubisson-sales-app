@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/exchange') }}">Control Exchange</a>
+                            <a class="nav-link" href="{{ url('/exchanges') }}">Control Exchange</a>
                         </li>
                     </ul>
 
@@ -81,7 +81,12 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="mt-3">
+                    @include('inc.messages')
+                </div>
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
