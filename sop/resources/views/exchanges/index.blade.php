@@ -6,13 +6,13 @@
             <h3>Control Exchange Program</h3>
         </div>
         <div class="col-md-6 text-end">
-           <a href="/exchanges/create" class="btn btn-primary">Add Exchange Program Detail</a>
+           <a href='{{ url("/exchanges/create") }}' class="btn btn-primary">Add Exchange Program Detail</a>
         </div>
     </div>
     
     @if (count($exchanges) > 0)
         @foreach ($exchanges as $exchange)
-            <a href="/exchanges/{{ $exchange->id }}">
+            <a href='{{ url("/exchanges/$exchange->id") }}'>
                 <div class="card p-3 mb-2">
                    <p>Brand: {{ $exchange->brand }}</p>
                    <p>Model: {{ $exchange->model }}</p>

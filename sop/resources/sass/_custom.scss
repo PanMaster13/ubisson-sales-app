@@ -5,3 +5,12 @@ body {
 #log-reg-container {
     margin-top: 10%;
 }
+
+.customFieldset {
+    border: 1px solid black;
+}
+
+.customFieldset legend {
+    float: none;
+    padding: inherit;
+}

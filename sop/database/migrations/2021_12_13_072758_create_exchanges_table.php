@@ -26,7 +26,7 @@ class CreateExchangesTable extends Migration
             $table->string('patient_phone_no');
             $table->string('patient_email');
             $table->string('patient_addr_1');
-            $table->string('patient_addr_2');
+            $table->string('patient_addr_2')->nullable();
             $table->string('patient_city');
             $table->string('patient_state');
             $table->string('patient_zipcode');
