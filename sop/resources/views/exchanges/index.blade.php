@@ -12,16 +12,73 @@
     
     @if (count($exchanges) > 0)
         @foreach ($exchanges as $exchange)
-            <a href='{{ url("/exchanges/$exchange->id") }}'>
+            <a href='{{ url("/exchanges/$exchange->id") }}' class="linkCard">
                 <div class="card p-3 mb-2">
-                   <p>Brand: {{ $exchange->brand }}</p>
-                   <p>Model: {{ $exchange->model }}</p>
-                  <p>Serial Number: {{ $exchange->serial_no }}</p>
-                   <small>Created at: {{ $exchange->created_at }}</small>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Brand: {{ $exchange->brand }}</h4>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <small>Created at: {{ $exchange->created_at }}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Model</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>: {{ $exchange->model }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Serial Number</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>: {{ $exchange->serial_no }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Exchanged Model</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>: {{ $exchange->exchange_model }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Exchanged Serial Number</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>: {{ $exchange->exchange_serial_no }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </a>
         @endforeach
-        {{ $exchanges->links() }}
+
+        <!-- Pagination will appear when there's more than 3 items -->
+        <div class="d-flex justify-content-center">
+            {!! $exchanges->links() !!}
+        </div>
+        
     @else
         <p>No exchanges found.</p>
     @endif

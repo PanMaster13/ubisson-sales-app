@@ -34,7 +34,7 @@ class CreateExchangesTable extends Migration
             $table->string('pharmacy_name');
             $table->string('pharmacy_account_no');
             $table->string('pharmacy_addr_1');
-            $table->string('pharmacy_addr_2');
+            $table->string('pharmacy_addr_2')->nullable();
             $table->string('pharmacy_city');
             $table->string('pharmacy_state');
             $table->string('pharmacy_zipcode');

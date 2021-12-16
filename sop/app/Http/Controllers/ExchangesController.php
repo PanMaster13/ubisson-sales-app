@@ -16,7 +16,7 @@ class ExchangesController extends Controller
     {
         // $exchanges = Exchange::all();
 
-        $exchanges = Exchange::orderBy('id', 'asc')->paginate(2);
+        $exchanges = Exchange::orderBy('id', 'asc')->paginate(3);
         return view('exchanges.index')->with('exchanges', $exchanges);
     }
 

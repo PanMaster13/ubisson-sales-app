@@ -6,6 +6,26 @@ body {
     margin-top: 10%;
 }
 
+.linkCard {
+    text-decoration: none;
+}
+
+.linkCard .card {
+    background-color: #a2d2ff;
+    color: black;
+    transition: 0.5s;
+}
+
+.linkCard .card:hover {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.linkCard .card:active {
+    color: red;
+    border: 1px solid yellow;
+}
+
 .customFieldset {
     border: 1px solid black;
 }
