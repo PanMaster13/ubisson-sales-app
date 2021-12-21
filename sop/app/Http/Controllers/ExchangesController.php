@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Exchange;
+use Illuminate\Support\Facades\Auth;
 
 class ExchangesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Guest can use the 'create' & 'store' function in this controller
+        $this->middleware('auth', ['except' => ['create', 'store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -117,7 +129,12 @@ class ExchangesController extends Controller
         $exchange->pharmacy_contact = $request->input('pharmacy_contact');
         $exchange->save();
 
-        return redirect('/exchanges')->with('success', 'Control Exchange Detail Added Successfully!');
+        if (Auth::user()) { // If user is logged in, redirect to exchanges list page
+            return redirect('/exchanges')->with('success', 'Control Exchange Detail Added Successfully!');
+        } else { // If user is guest, redirect to create page
+            return redirect('/exchanges/create')->with('success', 'Control Exchange Detail Added Successfully!');
+        }
+        
     }
 
     /**

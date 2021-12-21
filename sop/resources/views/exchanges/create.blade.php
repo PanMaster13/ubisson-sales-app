@@ -6,7 +6,9 @@
             <h3>Add a Control Exchange Program Detail</h3>
         </div>
         <div class="col-md-6 text-end">
-            <a href='{{ url("/exchanges/") }}' class="btn btn-secondary">Go Back</a>
+            @if (!Auth::guest())
+                <a href='{{ url("/exchanges/") }}' class="btn btn-secondary">Go Back</a>
+            @endif
         </div>
     </div>
     {!! Form::open(['route' => 'exchanges.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
