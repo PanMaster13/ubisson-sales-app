@@ -46,11 +46,8 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-4">
-                    <p>Created at</p>
-                </div>
-                <div class="col-md-8">
-                    <p>: {{ $exchange->created_at }}</p>
+                <div class="col-md-6">
+                    <img class="img-thumbnail" src="{{ url("/storage/serial_no_images/$exchange->serial_no_image") }}" />
                 </div>
             </div>
         </div>

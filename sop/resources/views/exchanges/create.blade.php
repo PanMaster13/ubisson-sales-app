@@ -9,7 +9,7 @@
             <a href='{{ url("/exchanges/") }}' class="btn btn-secondary">Go Back</a>
         </div>
     </div>
-    {!! Form::open(['route' => 'exchanges.store', 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'exchanges.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <fieldset class="customFieldset p-2">
             <legend class="w-auto">Device Details</legend>
             <div class="row g-2 mb-2">
@@ -27,11 +27,15 @@
                 </div>
             </div>
             <div class="row g-2 mb-2">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-floating">
                         {{ Form::text('serial_no', '', ['class' => 'form-control', 'placeholder' => 'Serial Number*'])}}
                         {{ Form::label('serial_no', 'Serial Number*')}}
                     </div>
+                </div>
+                <div class="col-md-6">
+                    {{ Form::label('serial_no_image', 'Serial Number Image') }}
+                    {{ Form::file('serial_no_image', ['class' => 'form-control']) }}
                 </div>
             </div>
             <div class="row g-2 mb-2">

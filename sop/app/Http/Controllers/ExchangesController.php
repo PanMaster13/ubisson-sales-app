@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Exchange;
 
 class ExchangesController extends Controller
@@ -42,6 +43,7 @@ class ExchangesController extends Controller
             'brand' => 'required',
             'model' => 'required',
             'serial_no' => 'required',
+            'serial_no_image' => 'image|nullable|max:1999',
             'exchange_model' => 'required',
             'exchange_serial_no' => 'required',
             'patient_name' => 'required',
@@ -49,6 +51,7 @@ class ExchangesController extends Controller
             'patient_phone_no' => 'required',
             'patient_email' => 'required',
             'patient_addr_1' => 'required',
+            'patient_addr_2' => 'nullable',
             'patient_city' => 'required',
             'patient_state' => 'required',
             'patient_zipcode' => 'required',
@@ -63,10 +66,32 @@ class ExchangesController extends Controller
             'pharmacy_contact' => 'required'
         ]);
 
+        // Handle file upload
+        if ($request->hasFile('serial_no_image')) {
+            // Get filename with extension
+            $fileNameWithExt = $request->file('serial_no_image')->getClientOriginalName();
+
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            // Get just extension
+            $extension = $request->file('serial_no_image')->getClientOriginalExtension();
+
+            // Filename to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+            // Upload Image
+            $path = $request->file('serial_no_image')->storeAs('public/serial_no_images', $fileNameToStore);
+            
+        } else {
+            $fileNameToStore = 'placeholder.jpg';
+        }
+
         $exchange = new Exchange;
         $exchange->brand = $request->input('brand');
         $exchange->model = $request->input('model');
         $exchange->serial_no = $request->input('serial_no');
+        $exchange->serial_no_image = $fileNameToStore;
         $exchange->exchange_model = $request->input('exchange_model');
         $exchange->exchange_serial_no = $request->input('exchange_serial_no');
 
@@ -139,6 +164,7 @@ class ExchangesController extends Controller
             'patient_phone_no' => 'required',
             'patient_email' => 'required',
             'patient_addr_1' => 'required',
+            'patient_addr_2' => 'nullable',
             'patient_city' => 'required',
             'patient_state' => 'required',
             'patient_zipcode' => 'required',
@@ -153,10 +179,35 @@ class ExchangesController extends Controller
             'pharmacy_contact' => 'required'
         ]);
 
+        // Handle file upload
+        if ($request->hasFile('serial_no_image')) {
+            // Get filename with extension
+            $fileNameWithExt = $request->file('serial_no_image')->getClientOriginalName();
+
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            // Get just extension
+            $extension = $request->file('serial_no_image')->getClientOriginalExtension();
+
+            // Filename to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+            // Upload Image
+            $path = $request->file('serial_no_image')->storeAs('public/serial_no_images', $fileNameToStore);
+            
+        }
+
         $exchange = Exchange::find($id);
         $exchange->brand = $request->input('brand');
         $exchange->model = $request->input('model');
         $exchange->serial_no = $request->input('serial_no');
+        if ($request->hasFile('serial_no_image')) {
+            if ($exchange->serial_no_image != 'placeholder.jpg') {
+                Storage::delete('public/serial_no_images/'.$exchange->serial_no_image);
+            }
+            $exchange->serial_no_image = $fileNameToStore; 
+        }
         $exchange->exchange_model = $request->input('exchange_model');
         $exchange->exchange_serial_no = $request->input('exchange_serial_no');
 
@@ -194,6 +245,12 @@ class ExchangesController extends Controller
     public function destroy($id)
     {
         $exchange = Exchange::find($id);
+
+        if ($exchange->serial_no_image != 'placeholder.jpg') {
+            // Delete Image
+            Storage::delete('public/serial_no_images/' . $exchange->serial_no_image);
+        }
+
         $exchange->delete();
         return redirect('/exchanges')->with('success', 'Control Exchange Detail Deleted Successfully!');
     }

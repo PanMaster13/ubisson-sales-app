@@ -18,6 +18,7 @@ class CreateExchangesTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('serial_no');
+            $table->string('serial_no_image');
             $table->timestamps(); // Can be used to display date and time
             $table->string('exchange_model');
             $table->string('exchange_serial_no');
