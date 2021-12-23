@@ -6,7 +6,7 @@
             <h3>Control Exchange Program</h3>
         </div>
         <div class="col-md-6 text-end">
-           <a href='{{ url("/exchanges/create") }}' class="btn btn-primary">Add Exchange Program Detail</a>
+           <a href='{{ url("/exchanges/create") }}' class="btn btn-success">Add Exchange Program Record</a>
         </div>
     </div>
     

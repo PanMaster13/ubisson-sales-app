@@ -72,10 +72,19 @@
 
         <main class="py-4">
             <div class="container">
-                <div class="mt-3">
-                    @include('inc.messages')
-                </div>
-                @yield('content')
+                
+                @if (!Auth::guest())
+                    <div class="mt-3">
+                        @include('inc.messages')
+                    </div>
+                    @yield('content')
+                @else
+                    <div>
+                        @include('inc.messages')
+                    </div>
+                    @yield('content')
+                @endif
+                
             </div>
         </main>
     </div>
