@@ -3,7 +3,7 @@
 @section('content')
     <div class="row mb-2">
         <div class="col-md-6">
-            <h3>Control Exchange Program</h3>
+            <h3>Control Exchange Program List</h3>
         </div>
         <div class="col-md-6 text-end">
            <a href='{{ url("/exchanges/create") }}' class="btn btn-success">Add Exchange Program Record</a>

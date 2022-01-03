@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="row mb-2">
-        <div class="col-md-6">
-            <h3>Edit a Control Exchange Program Detail</h3>
+        <div class="col-md-8">
+            <h3>Edit Exchange Program Record</h3>
         </div>
-        <div class="col-md-6 text-end">
+        <div class="col-md-4 text-end">
             <a href='{{ url("/exchanges/") }}' class="btn btn-secondary">Go Back</a>
         </div>
     </div>
@@ -114,6 +114,7 @@
                             'Malacca' => 'Malacca',
                             'Negeri Sembilan' => 'Negeri Sembilan',
                             'Pahang' => 'Pahang',
+                            'Penang' => 'Penang',
                             'Perak' => 'Perak',
                             'Perlis' => 'Perlis',
                             'Sabah' => 'Sabah',
@@ -192,6 +193,7 @@
                             'Malacca' => 'Malacca',
                             'Negeri Sembilan' => 'Negeri Sembilan',
                             'Pahang' => 'Pahang',
+                            'Penang' => 'Penang',
                             'Perak' => 'Perak',
                             'Perlis' => 'Perlis',
                             'Sabah' => 'Sabah',
@@ -230,7 +232,7 @@
         {{ Form::hidden('_method', 'PUT') }}
 
         <div class="d-flex justify-content-center mt-2">
-            {{ Form::submit('Update Control Exchange Detail', ['class' => 'btn btn-success w-25']) }}
+            {{ Form::submit('UPDATE EXCHANGE PROGRAM RECORD', ['class' => 'btn btn-primary']) }}
         </div>
     {!! Form::close() !!}
     

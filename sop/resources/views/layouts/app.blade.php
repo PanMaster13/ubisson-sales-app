@@ -24,7 +24,7 @@
         @if (Auth::guest())
         
         @else
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav id="theNavBar" class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand">
                         {{ config('app.name', 'Laravel') }}
@@ -35,12 +35,12 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Dashboard</a>
+                        <ul class="navbar-nav me-auto" id="navbarLinkList">
+                            <li class="nav-item {{ (request()->is('/')) ? 'activeNavItem' : '' }}">
+                                <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ url('/') }}">Dashboard</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/exchanges') }}">Control Exchange</a>
+                            <li class="nav-item {{ (request()->is('exchanges*')) ? 'activeNavItem' : '' }}">
+                                <a class="nav-link {{ (request()->is('exchanges*')) ? 'active' : '' }}" href="{{ url('/exchanges') }}">Control Exchange</a>
                             </li>
                         </ul>
 
@@ -71,8 +71,7 @@
         @endif
 
         <main class="py-4">
-            <div class="container">
-                
+            <div class="container mt-5">
                 @if (!Auth::guest())
                     <div class="mt-3">
                         @include('inc.messages')
