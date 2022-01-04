@@ -1,3 +1,7 @@
 require("./bootstrap");
 
-require("./customScript");
+// AngularJS library
+require("./angular.min");
+
+// Custom script
+require("./angularScripts");
